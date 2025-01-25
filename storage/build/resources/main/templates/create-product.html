@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание нового продукта</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Создание нового товара</h2>
+    <form action="#" th:action="@{/create}" th:object="${productModel}" method="post">
+        <div class="form-group">
+            <label for="name">Название</label>
+            <input type="text" id="name" class="form-control" th:field="*{name}" placeholder="Введите название продукта">
+        </div>
+
+        <div class="form-group">
+            <label for="article">Артикул</label>
+            <input type="number" id="article" class="form-control" th:field="*{article}" placeholder="Введите артикул">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Описание</label>
+            <textarea id="description" class="form-control" th:field="*{description}" placeholder="Введите описание продукта"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="type">Тип продукта</label>
+            <select id="type" class="form-control" th:field="*{productType}">
+                <option th:each="type : ${T(com.example.storage.enums.ProductType).values()}" th:value="${type}" th:text="${type}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Цена</label>
+            <input type="number" id="price" class="form-control" th:field="*{price}" placeholder="Введите цену" step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label for="cnt">Количество</label>
+            <input type="number" id="cnt" class="form-control" th:field="*{cnt}" placeholder="Введите количество">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+
+    <a href="/" class="btn btn-secondary mt-3">Назад к списку</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
